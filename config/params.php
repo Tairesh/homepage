@@ -6,4 +6,5 @@ return [
     'twitterUrl' => 'https://twitter.com/Tairesh',
     'facebookUrl' => 'https://facebook.com/Tairesh',
     'vkUrl' => 'https://vk.com/agafonovilya',
+    'telegramUrl' => 'https://telegram.me/tairesh',
 ];

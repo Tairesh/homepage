@@ -21,34 +21,35 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <?=Html::a('Главная', ['/'])?> | <?=Html::a('Обо мне', ['/about'])?> | <?=Html::a('Контакты', ['/contact'])?>
 
-    <header>
-        <nav>
-            <?=Html::a('Главная', ['/'])?> | <?=Html::a('Обо мне', ['/about'])?> | <?=Html::a('Контакты', ['/contact'])?>
+                <div>
+                    <?=Html::a('Twitter', Yii::$app->params['twitterUrl'], ['target' => '_blank'])?>
+                    <?=Html::a('Facebook', Yii::$app->params['facebookUrl'], ['target' => '_blank'])?>
+                    <?=Html::a('VK', Yii::$app->params['vkUrl'], ['target' => '_blank'])?>
+                    <?=Html::a('Telegram', Yii::$app->params['telegramUrl'], ['target' => '_blank'])?>
+                </div>
+            </nav>
 
-            <div>
-                <?=Html::a('Twitter', Yii::$app->params['twitterUrl'], ['target' => '_blank'])?>
-                <?=Html::a('Facebook', Yii::$app->params['facebookUrl'], ['target' => '_blank'])?>
-                <?=Html::a('VK', Yii::$app->params['vkUrl'], ['target' => '_blank'])?>
-            </div>
-        </nav>
+            <h1>Илья Агафонов<!--<span>gray text</span>--></h1>
+            <span>Об уральском регионализме и жизни</span>
+        </header>
+        <section id="breadcrumbs">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        </section>
+        <section role="main" class="content">
+            <?= $content ?>
+        </section>
 
-        <h1>Илья Агафонов<!--<span>gray text</span>--></h1>
-        <span>Об уральском регионализме и жизни</span>
-    </header>
-    <section id="breadcrumbs">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-    </section>
-    <section role="main">
-        <?= $content ?>
-    </section>
-
-    <footer>
-        <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>
-    </footer>
-
+        <footer>
+            <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>
+        </footer>
+    </div>
 <?php $this->endBody() ?>
 </body>
 </html>
