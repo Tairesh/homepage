@@ -124,7 +124,7 @@ class SiteController extends Controller
     public function actionEdit($pageId)
     {
         if (Yii::$app->user->isGuest) {
-            throw new \yii\web\NotFoundHttpException;
+            throw new \yii\web\NotFoundHttpException("Страница не найдена");
         }
         
         $page = Page::findOne($pageId);
