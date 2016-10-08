@@ -7,7 +7,8 @@
 
 namespace app\assets;
 
-use yii\web\AssetBundle;
+use yii\web\AssetBundle,
+    app\assets\FontAwesomeAsset;
 
 /**
  * @author Qiang Xue <qiang.xue@gmail.com>
@@ -24,7 +25,6 @@ class AppAsset extends AssetBundle
         'js/main.js',
     ];
     public $depends = [
-//        'yii\web\YiiAsset',
-//        'yii\bootstrap\BootstrapAsset',
+        'yii\web\YiiAsset'
     ];
 }

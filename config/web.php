@@ -5,6 +5,7 @@ $params = require(__DIR__ . '/params.php');
 $config = [
     'id' => 'homepage',
     'name' => 'Илья Агафонов',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
@@ -46,6 +47,9 @@ $config = [
             'rules' => [
                 '/about' => '/site/about',
                 '/contact' => '/site/contact',
+                '/login' => '/site/login',
+                '/logout' => '/site/logout',
+                '/edit' => '/site/edit',
             ],
         ],
         

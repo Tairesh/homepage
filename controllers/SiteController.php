@@ -7,7 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Page;
 
 class SiteController extends Controller
 {
@@ -28,12 +28,12 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+//            'verbs' => [
+//                'class' => VerbFilter::className(),
+//                'actions' => [
+//                    'logout' => ['post'],
+//                ],
+//            ],
         ];
     }
 
@@ -46,10 +46,10 @@ class SiteController extends Controller
             'error' => [
                 'class' => 'yii\web\ErrorAction',
             ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
+//            'captcha' => [
+//                'class' => 'yii\captcha\CaptchaAction',
+//                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+//            ],
         ];
     }
 
@@ -102,14 +102,9 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
+        $page = Page::findOne(2);
+        return $this->render('page', [
+            'page' => $page
         ]);
     }
 
@@ -120,6 +115,27 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $page = Page::findOne(1);
+        return $this->render('page', [
+            'page' => $page
+        ]);
     }
+    
+    public function actionEdit($pageId)
+    {
+        if (Yii::$app->user->isGuest) {
+            throw new \yii\web\NotFoundHttpException;
+        }
+        
+        $page = Page::findOne($pageId);
+        
+        if ($page->load(Yii::$app->request->post()) && $page->save()) {
+            return $this->goBack();
+        }
+        
+        return $this->render('edit', [
+            'page' => $page
+        ]);
+    }
+    
 }

@@ -15,7 +15,7 @@ body {
     background: #fff;
     color: #333;
     margin: 0 auto;
-    /*max-width: 900px;*/
+    max-width: 1280px;
     font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 100%;
 }
@@ -24,12 +24,11 @@ a {
     color: #105672;
 }
 
-header {
-    background: url(../img/header.png) center 0 no-repeat, transparent;
-    padding: .5em 3em;
-    color: #fff;
-    line-height: 1;
-    z-index: 1;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
 }
 
 .wrapper::before {
@@ -44,9 +43,18 @@ header {
     z-index: 0;
 }
 
+header {
+    background: url(../img/header.png) center 0 no-repeat, transparent;
+    padding: .5em 3em;
+    color: #fff;
+    line-height: 1;
+    z-index: 1;
+}
+
 header h1 {
     color: #000;
     margin: 0;
+    cursor: default;
 }
 
 header h1 span {
@@ -59,6 +67,7 @@ header span {
     color: #333;
     font-weight: 300;
     margin: 0.5em 0;
+    cursor: default;
 }
 
 header nav {
@@ -83,7 +92,30 @@ header nav a {
 }
 
 header nav a:hover, header nav a:focus {
-    color: #d5e0d5;
+    color: #eee;
+}
+
+#breadcrumbs {
+    padding: .5em 3em;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.breadcrumb > li {
+    display: inline-block;
+}
+
+.breadcrumb > li + li::before {
+    box-sizing: border-box;
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
 }
 
 [role=main] {
@@ -130,7 +162,8 @@ blockquote p {
 
 a {
     font: 700 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-decoration: none
+    text-decoration: none;
+    color: #090;
 }
 
 a:hover, a:focus {
@@ -261,12 +294,4 @@ a:active {
     }
     
 
-}
-
-/* Flexboxed */
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
