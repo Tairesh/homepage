@@ -115,12 +115,13 @@ header nav a:hover, header nav a:focus {
     box-sizing: border-box;
     padding: 0 5px;
     color: #ccc;
-    content: "/\00a0";
+    content: "\\\00a0";
 }
 
 [role=main] {
     padding: 0 3em;
     flex: 1 0 auto;
+    position: relative;
 }
 
 article {
@@ -229,6 +230,15 @@ a:active {
     float: right;
 }
 
+/* Lizard */ 
+
+#lizard {
+    width: 20em;
+    max-width: 50%;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+}
 
 /* Media queries */ 
 @media screen and (min-width:900px)
@@ -293,5 +303,10 @@ a:active {
         padding: 0 2em;
     }
     
+    #lizard {
+        position: relative;
+        bottom: 0;
+        right: 0;
+    }   
 
 }

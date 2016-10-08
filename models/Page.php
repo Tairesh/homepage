@@ -44,11 +44,11 @@ class Page extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'label' => 'Label',
-            'content' => 'Content',
-            'isActive' => 'Is Active',
-            'inMenu' => 'In Menu',
+            'title' => 'Заголовок',
+            'label' => 'Метка',
+            'content' => 'Содержимое',
+            'isActive' => 'Активна',
+            'inMenu' => 'Показывать в меню',
         ];
     }
 }
