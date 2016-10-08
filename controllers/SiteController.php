@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Page;
+use app\models\Post;
 
 class SiteController extends Controller
 {
@@ -60,7 +61,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $posts = Post::find()->where(['onMain' => true])->orderBy(['dateCreated' => SORT_DESC])->all();
+        return $this->render('index', [
+            'posts' => $posts
+        ]);
     }
 
     /**

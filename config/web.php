@@ -50,6 +50,7 @@ $config = [
                 '/login' => '/site/login',
                 '/logout' => '/site/logout',
                 '/edit' => '/site/edit',
+                '/p/<url:.+>' => '/post/view',
             ],
         ],
         
