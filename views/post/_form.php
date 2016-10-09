@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'type')->dropDownList([1 => 'Текст']) ?>
+    <?= $form->field($model, 'type')->dropDownList([1 => 'Текст', 2 => 'Цитата']) ?>
 
     <?= $form->field($model, 'isActive')->checkbox() ?>
 

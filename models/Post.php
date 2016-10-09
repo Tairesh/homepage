@@ -19,6 +19,17 @@ use Yii;
  */
 class Post extends \yii\db\ActiveRecord
 {
+    
+    /**
+     * Текстовый пост
+     */
+    const TYPE_TEXT = 1;
+    
+    /**
+     * Цитата
+     */
+    const TYPE_QUOTE = 2;
+    
     /**
      * @inheritdoc
      */
