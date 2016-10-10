@@ -43,9 +43,13 @@ AppAsset::register($this);
             ]) ?>
         </section>
         <section role="main" class="content">
-            <?= $content ?>
+            <section class="leftColumn">
+                <?= $content ?>
+            </section>
+            <section class="rightColumn">
+                asda
+            </section>
         </section>
-
         <footer>
             <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>
         </footer>

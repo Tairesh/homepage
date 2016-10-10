@@ -23,29 +23,71 @@ $this->title = Yii::$app->name;
 <?php switch ($post->type): 
     case Post::TYPE_TEXT: ?>
 <article>
-    <?php if ($post->title): ?>
-        <h2><a href="/p/<?=urlencode($post->url)?>"><?=$post->title?></a></h2>
-    <?php endif ?>
-    <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]), ['class' => 'date'])?>
-    <?=$post->content?>
-    <?php if (!Yii::$app->user->isGuest): ?>
-        <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
-    <?php endif ?>
+    <ul class="tags">
+        <li>
+            <a href="#">Тестовый тег</a>
+            <a href="#">Ещё тег</a>
+        </li>
+    </ul>
+    <div class="post-content">
+        <?php if ($post->title): ?>
+        <h2>
+            <?=Html::a($post->title, Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
+        </h2>
+        <?php endif ?>
+        <div class="post-body">
+            <?=$post->content?>
+        </div>
+        <ul class="post-meta">
+            <li>
+                <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
+            </li>
+            <li>
+                Поделиться
+            </li>
+            <?php if (!Yii::$app->user->isGuest): ?>
+            <li>
+                <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
+            </li>
+            <?php endif ?>
+        </ul>
+        <div class="clear"></div>
+    </div>
 </article>
     <?php break; 
     case Post::TYPE_QUOTE: ?>
 <article>
-    <blockquote>
-        <p><?=$post->content?></p>
-        <p class="author" >— <?=$post->title?></p>
-    </blockquote>
-    <?php if (!Yii::$app->user->isGuest): ?>
-        <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
-    <?php endif ?>
+    <ul class="tags">
+        <li>
+            <a href="#">Тестовый тег</a>
+            <a href="#">Ещё тег</a>
+        </li>
+    </ul>
+    <div class="post-content">
+        <q>
+            <p><?=$post->content?></p>
+        </q>
+        <div class="post-body">
+            <?=$post->title?>
+        </div>
+        <ul class="post-meta">
+            <li>
+                <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
+            </li>
+            <li>
+                Поделиться
+            </li>
+            <?php if (!Yii::$app->user->isGuest): ?>
+            <li>
+                <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
+            </li>
+            <?php endif ?>
+        </ul>
+        <div class="clear"></div>
+    </div>
 </article>
     <?php break;
  endswitch ?>
-<?php if ($i < count($posts)-1): ?><hr><?php endif ?>
 <?php endforeach ?>
 <?=LinkPager::widget(['pagination' => $pagination])?>
 <?php Pjax::end() ?>

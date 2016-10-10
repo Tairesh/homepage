@@ -68,7 +68,7 @@ class SiteController extends Controller
         
         $pagination = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize' => 1,
+            'pageSize' => 20,
             'pageSizeParam' => false
         ]);
         
