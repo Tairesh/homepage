@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Page;
 use app\models\Post;
+use yii\data\Pagination;
 
 class SiteController extends Controller
 {
@@ -61,9 +62,23 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $posts = Post::find()->where(['onMain' => true])->orderBy(['dateCreated' => SORT_DESC])->all();
+        
+        $query = Post::find()->where(['onMain' => true])->orderBy(['dateCreated' => SORT_DESC]);
+        $countQuery = clone $query;
+        
+        $pagination = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize' => 1,
+            'pageSizeParam' => false
+        ]);
+        
+        $models = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+        
         return $this->render('index', [
-            'posts' => $posts
+            'posts' => $models,
+            'pagination' => $pagination,
         ]);
     }
 

@@ -50,7 +50,13 @@ $config = [
                 '/login' => '/site/login',
                 '/logout' => '/site/logout',
                 '/edit' => '/site/edit',
-                '/p/<url:.+>' => '/post/view',
+//                '/p/<url:.+>' => '/post/view',
+//                '/' => '/site/index',
+//                '/<page:\d+>' => '/site/index',
+                
+                [
+                    'class' => 'app\components\BlogUrlRule',
+                ],
             ],
         ],
         

@@ -52,12 +52,12 @@ class PostController extends Controller
     
     /**
      * Views an existing Post model.
-     * @param string $url
+     * @param string $id
      * @return mixed
      */
-    public function actionView($url)
+    public function actionView($id)
     {
-        $model = $this->findModelByUrl($url);
+        $model = $this->findModel($id);
         
         return $this->render('view', [
             'model' => $model
@@ -80,19 +80,4 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Finds the Post model based on its url.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $url
-     * @return Post the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModelByUrl($url)
-    {
-        if (($model = Post::find()->where(['url' => $url])->one()) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('Страница не найдена');
-        }
-    }
 }
