@@ -47,8 +47,11 @@ AppAsset::register($this);
                 <?= $content ?>
             </section>
             <section class="rightColumn">
-                asda
+                <div class="twitter=feed">
+                    <a class="twitter-timeline" data-lang="ru" data-height="500" data-dnt="false" data-link-color="#009900" href="https://twitter.com/Tairesh">Tweets by Tairesh</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </section>
+            <div class="cloar">
         </section>
         <footer>
             <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>

@@ -47,7 +47,7 @@ $this->title = Yii::$app->name;
             </li>
             <?php if (!Yii::$app->user->isGuest): ?>
             <li>
-                <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
+                <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
             </li>
             <?php endif ?>
         </ul>
@@ -79,7 +79,7 @@ $this->title = Yii::$app->name;
             </li>
             <?php if (!Yii::$app->user->isGuest): ?>
             <li>
-                <a href="/post/update?id=<?=$post->id?>">[ Редактировать пост ]</a>
+                <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
             </li>
             <?php endif ?>
         </ul>
