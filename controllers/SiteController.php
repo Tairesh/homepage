@@ -74,6 +74,7 @@ class SiteController extends Controller
         
         $models = $query->offset($pagination->offset)
             ->limit($pagination->limit)
+            ->with('tags')
             ->all();
         
         return $this->render('index', [

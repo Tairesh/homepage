@@ -15,7 +15,7 @@ body {
     background: #fff;
     color: #333;
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1024px;
     font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 100%;
 }
@@ -162,11 +162,10 @@ header nav a:hover, header nav a:focus {
 
 article {
     padding: 1em 0;
-    border-top: 2px solid #090;
+    border-top: 2px solid #eee;
 }
 
 article .tags {
-    margin-bottom: 15px;
     list-style: none;
 }
 
@@ -355,12 +354,6 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
     border-radius: 0;
 }
 
-/* Date */
-
-.date {
-    float: right;
-}
-
 /* Lizard */ 
 
 #lizard {
@@ -379,6 +372,19 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
     }
 }
 
+@media screen and (max-width: 800px)
+{    
+    .leftColumn {
+        margin-right: 0;
+    }
+    
+    .rightColumn {
+        position: relative;
+        width: 100%;
+        margin-top: 1em;
+    }
+}
+
 @media screen and (max-width:600px)
 {
     #tabs nav {
@@ -393,17 +399,7 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
     #tabs article {
         display:block;
     }
-    
-    .leftColumn {
-        margin-right: 0;
-    }
-    
-    .rightColumn {
-        position: relative;
-        width: 100%;
-        margin-top: 1em;
-    }
-    
+        
 }
 @media screen and (max-width:480px)
 {

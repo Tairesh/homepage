@@ -23,12 +23,15 @@ $this->title = Yii::$app->name;
 <?php switch ($post->type): 
     case Post::TYPE_TEXT: ?>
 <article>
+    <?php if (count($post->tags)): ?>
     <ul class="tags">
+        <?php foreach ($post->tags as $tag): ?>
         <li>
-            <a href="#">Тестовый тег</a>
-            <a href="#">Ещё тег</a>
+            <a href="/tag/<?=urlencode($tag->name)?>"><?=$tag->name?></a>
         </li>
+        <?php endforeach ?>
     </ul>
+    <?php endif ?>
     <div class="post-content">
         <?php if ($post->title): ?>
         <h2>
@@ -57,12 +60,15 @@ $this->title = Yii::$app->name;
     <?php break; 
     case Post::TYPE_QUOTE: ?>
 <article>
+    <?php if (count($post->tags)): ?>
     <ul class="tags">
+        <?php foreach ($post->tags as $tag): ?>
         <li>
-            <a href="#">Тестовый тег</a>
-            <a href="#">Ещё тег</a>
+            <a href="/tag/<?=urlencode($tag->name)?>"><?=$tag->name?></a>
         </li>
+        <?php endforeach ?>
     </ul>
+    <?php endif ?>
     <div class="post-content">
         <q>
             <p><?=$post->content?></p>
