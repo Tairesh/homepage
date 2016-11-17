@@ -7,19 +7,62 @@ use app\models\Post;
 use app\models\Tag;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
+use yii\data\Pagination;
 
 /**
  * PostController implements the CRUD actions for Post model.
  */
 class PostController extends Controller
 {
+    
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'view'],
+                'rules' => [
+                    [
+                        'actions' => ['create', 'update', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
 
     public function actionIndex($tagName)
     {
-	$posts = $this->getPostsByTagName($tagName);
-	return $this->render('/site/index', [
-	    'posts' => $posts,
-	]);
+        $tag = $this->getTagByName($tagName);
+        $query = Post::find()
+                ->leftJoin('posts2tags', 'posts2tags.postId = posts.id')
+                ->where(['onMain' => true])
+                ->andWhere(['posts2tags.tagId' => $tag->id])
+                ->orderBy(['dateCreated' => SORT_DESC]);
+        $countQuery = clone $query;
+        
+        $pagination = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize' => 2,
+            'pageSizeParam' => false
+        ]);
+        
+        $models = $query
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->with('tags')
+            ->all();
+        
+        return $this->render('/site/index', [
+            'posts' => $models,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**
@@ -89,13 +132,13 @@ class PostController extends Controller
         }
     }
 
-    protected function getPostsByTagName($tagName)
+    protected function getTagByName($tagName)
     {
 	$tag = Tag::findByName($tagName);
 	if (is_null($tag)) {
 	    throw new NotFoundHttpException('Страница не найдена');
 	}
-	return Post::findAllByTag($tag);
+	return $tag;
     }
 
 }

@@ -47,6 +47,12 @@ class Tag extends \yii\db\ActiveRecord
             'rating' => 'Рейтинг',
         ];
     }
+    
+    public function beforeSave($insert)
+    {
+        $this->name = mb_strtolower($this->name);
+        return parent::beforeSave($insert);
+    }
 
     /**
      * @return \yii\db\ActiveQuery

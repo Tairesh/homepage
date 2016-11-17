@@ -122,6 +122,7 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
+        $this->layout = 'onecolumn';
         $page = Page::findOne(2);
         return $this->render('page', [
             'page' => $page
@@ -135,6 +136,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        $this->layout = 'onecolumn';
         $page = Page::findOne(1);
         return $this->render('page', [
             'page' => $page

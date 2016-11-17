@@ -26,10 +26,13 @@ class BlogUrlRule extends Object implements UrlRuleInterface
             }
         }
 
-	if ($route == 'tag/view') {
-	    if (isset($params['name'])) {
-		$url = '/tags/'.$params['name'];
-		return urlencode($url);
+	if ($route == 'post/index') {
+	    if (isset($params['tagName'])) {
+		$url = 'tag/'.$params['tagName'];
+                if (isset($params['page'])) {
+                    $url .= '/'.$params['page'];
+                }
+		return $url;
 	    }
 	}
         
@@ -47,9 +50,9 @@ class BlogUrlRule extends Object implements UrlRuleInterface
             }
         }
 	
-	if (preg_match('%^tag/(.+)$%', $pathInfo, $matches)) {
+	if (preg_match('%^tag/([\wёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]+)/*(\d*)$%', $pathInfo, $matches)) {
 	    if ($matches[0]) {
-		return ['post/index', ['tagName' => $matches[1]]];
+		return ['post/index', ['tagName' => mb_strtolower($matches[1]), 'page' => $matches[2] ? $matches[2] : 1]];
 	    }
 	}
         

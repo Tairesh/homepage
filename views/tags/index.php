@@ -25,7 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            [
+                'attribute' => 'name',
+                'value' => function ($row) {
+                    return Html::a($row['name'], ['update', 'id' => $row['id']]);
+                },
+                'format' => 'raw',
+            ],
             'rating',
 
             ['class' => 'yii\grid\ActionColumn'],

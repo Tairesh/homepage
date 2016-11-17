@@ -12,7 +12,6 @@ html{
 
 body {
     padding: 0px;
-    background: #fff;
     color: #333;
     margin: 0 auto;
     max-width: 1024px;
@@ -25,9 +24,10 @@ a {
 }
 
 .wrapper {
+    background: #fff;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     position: relative;
 }
 
@@ -382,6 +382,7 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
         position: relative;
         width: 100%;
         margin-top: 1em;
+        padding-right: 0;
     }
 }
 
