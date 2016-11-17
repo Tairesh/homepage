@@ -50,8 +50,9 @@ AppAsset::register($this);
                 <article id="tagslist">
                     <h3>Категории:</h3>
                     <ul class="tags">
-                        <li><a href="#">Тег</a></li>
-                        <li><a href="#">Хуег</a></li>
+			<?php foreach (Yii::$app->tagLoader->tags as $tag): ?>
+                        <li><?=Html::a($tag->name.' ('.$tag->rating.')','/tag/'.$tag->name)?></li>
+			<?php endforeach ?>
                     </ul>
                 </article>
             </section>

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Post;
+use app\models\Tag;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -12,6 +13,14 @@ use yii\web\NotFoundHttpException;
  */
 class PostController extends Controller
 {
+
+    public function actionIndex($tagName)
+    {
+	$posts = $this->getPostsByTagName($tagName);
+	return $this->render('/site/index', [
+	    'posts' => $posts,
+	]);
+    }
 
     /**
      * Creates a new Post model.
@@ -78,6 +87,15 @@ class PostController extends Controller
         } else {
             throw new NotFoundHttpException('Страница не найдена');
         }
+    }
+
+    protected function getPostsByTagName($tagName)
+    {
+	$tag = Tag::findByName($tagName);
+	if (is_null($tag)) {
+	    throw new NotFoundHttpException('Страница не найдена');
+	}
+	return Post::findAllByTag($tag);
     }
 
 }

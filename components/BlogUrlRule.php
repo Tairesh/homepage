@@ -25,6 +25,13 @@ class BlogUrlRule extends Object implements UrlRuleInterface
                 return urlencode($url);
             }
         }
+
+	if ($route == 'tag/view') {
+	    if (isset($params['name'])) {
+		$url = '/tags/'.$params['name'];
+		return urlencode($url);
+	    }
+	}
         
         return false;  // this rule does not apply
     }
@@ -33,12 +40,18 @@ class BlogUrlRule extends Object implements UrlRuleInterface
     {
         $pathInfo = $request->getPathInfo();
         
-//        var_dump($pathInfo); exit();
+//        var_dump($pathInfo); die();
         if (preg_match('%^(\d+)?$%', $pathInfo, $matches)) {
             if ($matches[0]) {
                 return ['site/index', ['page' => $matches[1]]];
             }
         }
+	
+	if (preg_match('%^tag/(.+)$%', $pathInfo, $matches)) {
+	    if ($matches[0]) {
+		return ['post/index', ['tagName' => $matches[1]]];
+	    }
+	}
         
         if ($postId = Post::find()->where(['url' => $pathInfo])->select(['id'])->scalar()) {
             return ['post/view', ['id' => $postId]];

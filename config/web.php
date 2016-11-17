@@ -59,6 +59,9 @@ $config = [
                 ],
             ],
         ],
+	'tagLoader' => [
+	    'class' => 'app\components\TagLoader',
+	],
         
     ],
     'params' => $params,
@@ -74,6 +77,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+//	'allowedIPs' => ['*'],
     ];
 }
 

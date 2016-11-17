@@ -63,4 +63,9 @@ class Tag extends \yii\db\ActiveRecord
             $this->save();
         }
     }
+
+    public static function findByName($name)
+    {
+	return self::find()->where(['name' => $name])->one();
+    }
 }

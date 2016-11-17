@@ -121,4 +121,13 @@ class Post extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Tag::className(), ['id' => 'tagId'])->viaTable('posts2tags', ['postId' => 'id']);
     }
+
+    public static function findAllByTag(Tag $tag)
+    {
+	return self::find()
+		->with('tags')
+		->where(['tags.id' => $tag->id])
+		->all();
+    }
 }
+
