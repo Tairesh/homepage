@@ -6,7 +6,7 @@
 use yii\widgets\ActiveForm,
     yii\helpers\Html;
 
-$this->title = Yii::$app->name . ' | ' . $page->title;
+$this->title = $page->title . ' | ' . Yii::$app->name;
 $this->params['breadcrumbs'][] = $page->title;
 
 ?>

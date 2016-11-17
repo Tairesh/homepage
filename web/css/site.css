@@ -364,6 +364,11 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
     right: 2em;
 }
 
+.text-right {
+    float: right;
+    text-align: right;
+}
+
 /* Media queries */ 
 @media screen and (min-width:900px)
 {

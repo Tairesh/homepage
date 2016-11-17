@@ -15,6 +15,8 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#009900">
+    <link rel="icon" sizes="800x800" href="/img/lizard.png">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -43,12 +45,11 @@ AppAsset::register($this);
             ]) ?>
         </section>
         <section role="main" class="content">
-            <section class="leftColumn">
-                <?= $content ?>
-            </section>
-            <div class="clear">
+            <?= $content ?>
+            <div class="clear"></div>
         </section>
         <footer>
+            <div class="text-right"><?= \app\models\Page::findOne(4)->content ?><?php if (!Yii::$app->user->isGuest()) echo Html::a('[ edit ]', '/edit?id=4') ?></div>
             <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>
         </footer>
     </div>
