@@ -7,7 +7,7 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::$app->name . ' | ' . $name;
+$this->title = $name . ' | ' . Yii::$app->name;
 ?>
 
 <div style="text-align: center; padding-top: 10em">
