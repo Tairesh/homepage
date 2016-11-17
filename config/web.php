@@ -1,6 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
+$secret = require(__DIR__ . '/secret.php');
 
 $config = [
     'id' => 'homepage',
@@ -11,7 +12,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'YeoSfSxBvIkBYN4Zn6W--ZM76HqfeAkI',
+            'cookieValidationKey' => $secret['cookieValidationKey'],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -64,7 +65,7 @@ $config = [
 	],
         
     ],
-    'params' => $params,
+    'params' => array_merge($params, $secret),
 ];
 
 if (YII_ENV_DEV) {
