@@ -9,7 +9,7 @@ class TagLoader extends Component {
 
     public function getTags()
     {
-        return Tag::find()->all();
+        return Tag::find()->where(['>', 'rating', 0])->orderBy(['rating' => SORT_DESC])->all();
     }
 
 }

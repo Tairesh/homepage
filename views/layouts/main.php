@@ -4,10 +4,10 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -23,27 +23,7 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-    <div class="wrapper">
-        <header>
-            <nav>
-                <?=Html::a('Главная', ['/'])?> | <?=Html::a('Обо мне', ['/about'])?> | <?=Html::a('Контакты', ['/contact'])?>
-
-                <div>
-                    <?=Html::a(Html::img('/img/407-twitter.png'), Yii::$app->params['twitterUrl'], ['target' => '_blank', 'title' => 'Twitter'])?>
-                    <?=Html::a(Html::img('/img/402-facebook2.png'), Yii::$app->params['facebookUrl'], ['target' => '_blank', 'title' => 'Facebook'])?>
-                    <?=Html::a(Html::img('/img/409-vk.png'), Yii::$app->params['vkUrl'], ['target' => '_blank', 'title' => 'VK'])?>
-                    <?=Html::a(Html::img('/img/406-telegram.png'), Yii::$app->params['telegramUrl'], ['target' => '_blank', 'title' => 'Telegram'])?>
-                </div>
-            </nav>
-
-            <h1>Илья Агафонов<!--<span>gray text</span>--></h1>
-            <span>Об уральском регионализме и жизни</span>
-        </header>
-        <section id="breadcrumbs">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-        </section>
+    <?=$this->render('_header')?>
         <section role="main" class="content">
             <section class="leftColumn">
                 <?= $content ?>
@@ -59,17 +39,14 @@ AppAsset::register($this);
                 </article>
                 <article id="customColumn">
                     <?= \app\models\Page::findOne(3)->content ?>
-                    <?php if (!Yii::$app->user->isGuest()) echo Html::a('[ edit ]', '/edit?id=3') ?>
+                    <?php if (!Yii::$app->user->isGuest) echo Html::a('[ edit ]', ['/edit', 'pageId' => 3]) ?>
                 </article>
             </section>
             <div class="clear"></div>
         </section>
-        <footer>
-            <div class="text-right"><?= \app\models\Page::findOne(4)->content ?><?php if (!Yii::$app->user->isGuest()) echo Html::a('[ edit ]', '/edit?id=4') ?></div>
-            <p>&copy; Илья Агафонов, 2014&mdash;<?= date('Y') ?></p>
-        </footer>
-    </div>
+    <?=$this->render('_footer')?>
 <?php $this->endBody() ?>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
 </body>
 </html>
 <?php $this->endPage() ?>

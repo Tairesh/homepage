@@ -38,15 +38,12 @@ $this->title = Yii::$app->name;
             <?=Html::a($post->title, Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
         </h2>
         <?php endif ?>
-        <div class="post-body">
-            <?=$post->content?>
-        </div>
         <ul class="post-meta">
             <li>
                 <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
             </li>
             <li>
-                Поделиться
+                <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
             </li>
             <?php if (!Yii::$app->user->isGuest): ?>
             <li>
@@ -54,6 +51,9 @@ $this->title = Yii::$app->name;
             </li>
             <?php endif ?>
         </ul>
+        <div class="post-body">
+            <?=$post->content?>
+        </div>
         <div class="clear"></div>
     </div>
 </article>
@@ -73,15 +73,12 @@ $this->title = Yii::$app->name;
         <q>
             <p><?=$post->content?></p>
         </q>
-        <div class="post-body">
-            <?=$post->title?>
-        </div>
         <ul class="post-meta">
             <li>
                 <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
             </li>
             <li>
-                Поделиться
+                <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
             </li>
             <?php if (!Yii::$app->user->isGuest): ?>
             <li>
@@ -89,6 +86,9 @@ $this->title = Yii::$app->name;
             </li>
             <?php endif ?>
         </ul>
+        <div class="post-body">
+            <?=$post->title?>
+        </div>
         <div class="clear"></div>
     </div>
 </article>

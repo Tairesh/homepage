@@ -214,9 +214,9 @@ article q.long {
 }
 
 article .post-body {
-    width: 75%;
+    width: 70%;
     float: left;
-    margin-right: 30px;
+    margin-right: 5%;
     font-size: 15px;
     line-height: 1.4;
     word-wrap: break-word;
