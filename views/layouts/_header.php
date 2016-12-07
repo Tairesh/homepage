@@ -20,7 +20,7 @@ use yii\widgets\Breadcrumbs;
             </nav>
 
             <h1>Илья Агафонов<!--<span>gray text</span>--></h1>
-            <!--<span>Об уральском регионализме и жизни</span>-->
+            <span>База знаний</span>
         </header>
         <section id="breadcrumbs">
             <?= Breadcrumbs::widget([

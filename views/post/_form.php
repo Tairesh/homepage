@@ -30,7 +30,7 @@ $model->setTags = ArrayHelper::getColumn($model->tags,'id');
 
     <?= $form->field($model, 'onMain')->checkbox() ?>
 
-    <?= $form->field($model, 'setTags')->widget(Select2::classname(), [
+    <?= $form->field($model, 'setTags', ['template' => "{label} ".Html::a("[ Добавить тег ]", ['/tags/create'])."\n{input}\n{hint}\n{error}"])->widget(Select2::classname(), [
             'language' => 'ru-RU',
             'data' => ArrayHelper::map(Tag::find()->all(),'id','name'),
             'options' => ['multiple' => 'multiple'],

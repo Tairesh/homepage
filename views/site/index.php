@@ -38,24 +38,24 @@ $this->title = Yii::$app->name;
             <?=Html::a($post->title, Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
         </h2>
         <?php endif ?>
-        <ul class="post-meta">
-            <li>
-                <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
-            </li>
-            <li>
-                <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
-            </li>
-            <?php if (!Yii::$app->user->isGuest): ?>
-            <li>
-                <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
-            </li>
-            <?php endif ?>
-        </ul>
         <div class="post-body">
             <?=$post->content?>
         </div>
         <div class="clear"></div>
     </div>
+    <ul class="post-meta">
+        <li>
+            <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
+        </li>
+        <li>
+            <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
+        </li>
+        <?php if (!Yii::$app->user->isGuest): ?>
+        <li>
+            <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
+        </li>
+        <?php endif ?>
+    </ul>
 </article>
     <?php break; 
     case Post::TYPE_QUOTE: ?>
@@ -70,27 +70,27 @@ $this->title = Yii::$app->name;
     </ul>
     <?php endif ?>
     <div class="post-content">
-        <q>
-            <p><?=$post->content?></p>
-        </q>
-        <ul class="post-meta">
-            <li>
-                <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
-            </li>
-            <li>
-                <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
-            </li>
-            <?php if (!Yii::$app->user->isGuest): ?>
-            <li>
-                <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
-            </li>
-            <?php endif ?>
-        </ul>
         <div class="post-body">
+            <q class="<?= mb_strlen($post->content) > 140 ? 'long' : 'medium' ?>">
+                <p><?=$post->content?></p>
+            </q>
             <?=$post->title?>
         </div>
         <div class="clear"></div>
     </div>
+    <ul class="post-meta">
+        <li>
+            <?=Html::a(date('d.m.Y', $post->dateCreated), Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>
+        </li>
+        <li>
+            <span class="likebtn-wrapper" data-theme="transparent" data-lang="ru" data-rich_snippet="true" data-identifier="post_like_<?=$post->id?>" data-dislike_enabled="false" data-icon_dislike_show="false" data-counter_clickable="true" data-item_url="https://agafonov.xyz<?=urldecode(Yii::$app->urlManager->createUrl(['post/view', 'id' => $post->id]))?>" data-item_title="<?=$post->title?>" data-lazy_load="true" data-loader_show="true"></span>
+        </li>
+        <?php if (!Yii::$app->user->isGuest): ?>
+        <li>
+            <a href="/post/update?id=<?=$post->id?>">[ EDIT ]</a>
+        </li>
+        <?php endif ?>
+    </ul>
 </article>
     <?php break;
  endswitch ?>

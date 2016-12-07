@@ -63,7 +63,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         
-        $query = Post::find()->where(['onMain' => true])->orderBy(['dateCreated' => SORT_DESC]);
+        $query = Post::find()
+                ->where(['isActive' => true, 'onMain' => true])
+                ->orderBy(['dateCreated' => SORT_DESC]);
         $countQuery = clone $query;
         
         $pagination = new Pagination([

@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = 'Авторизация';
 ?>
 <div class="site-login">
     <h1>Авторизация</h1>
-<?php var_dump(Yii::$app->params['password'])?>
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'options' => ['class' => 'form-horizontal'],

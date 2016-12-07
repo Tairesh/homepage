@@ -71,6 +71,7 @@ class Post extends \yii\db\ActiveRecord
             'type' => 'Тип',
             'isActive' => 'Активно',
             'onMain' => 'Показывать на главной',
+            'setTags' => 'Теги',
         ];
     }
     
@@ -90,6 +91,11 @@ class Post extends \yii\db\ActiveRecord
             $this->generateUrl();
         }
         
+        return parent::beforeSave($insert);
+    }
+    
+    public function afterSave($insert, $changedAttributes)
+    {
         if (!$this->setTags) {
             $this->setTags = [];
         }
@@ -110,8 +116,8 @@ class Post extends \yii\db\ActiveRecord
                 $tag->calcRating();
             }
         }
-
-        return parent::beforeSave($insert);
+        
+        return parent::afterSave($insert, $changedAttributes);
     }
 
     /**

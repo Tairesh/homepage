@@ -214,9 +214,6 @@ article q.long {
 }
 
 article .post-body {
-    width: 70%;
-    float: left;
-    margin-right: 5%;
     font-size: 15px;
     line-height: 1.4;
     word-wrap: break-word;
@@ -224,11 +221,9 @@ article .post-body {
 
 article .post-meta {
     border-top: 0;
-    margin-top: 0;
-    width: 25%;
-    float: right;
     margin-top: 4px;
     list-style: none;
+    text-align: right;
 }
 
 article .post-meta li {
@@ -236,6 +231,7 @@ article .post-meta li {
     word-wrap: break-word;
     line-height: 1.2;
     position: relative;
+    display: inline-block;
 }
 
 article .post-meta li a {
@@ -359,7 +355,7 @@ h1 a:hover, h2 a:hover, h1 a:focus, h2 a:focus {
 #lizard {
     width: 20em;
     max-width: 50%;
-    position: fixed;
+    position: absolute;
     bottom: 2em;
     right: 2em;
 }

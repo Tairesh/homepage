@@ -42,14 +42,14 @@ class PostController extends Controller
         $tag = $this->getTagByName($tagName);
         $query = Post::find()
                 ->leftJoin('posts2tags', 'posts2tags.postId = posts.id')
-                ->where(['onMain' => true])
+                ->where(['isActive' => true])
                 ->andWhere(['posts2tags.tagId' => $tag->id])
                 ->orderBy(['dateCreated' => SORT_DESC]);
         $countQuery = clone $query;
         
         $pagination = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize' => 2,
+            'pageSize' => 20,
             'pageSizeParam' => false
         ]);
         
