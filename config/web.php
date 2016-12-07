@@ -63,6 +63,9 @@ $config = [
 	'tagLoader' => [
 	    'class' => 'app\components\TagLoader',
 	],
+        'xmlParser' => [
+            'class' => 'app\components\XmlParser',
+        ],
         
     ],
     'params' => array_merge($params, $secret),
