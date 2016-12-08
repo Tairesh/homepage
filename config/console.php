@@ -23,6 +23,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'xmlParser' => [
+            'class' => 'app\components\XmlParser',
+        ],
     ],
     'params' => $params,
     /*

@@ -28,10 +28,24 @@ class XmlParser extends Component
         }
         $result = (array) $xml;
         foreach ($result as $key => $value) {
-            if (is_object($value)) {
-                $result[$key] = $this->convertXmlToArray($value);
-            }
+            $result[$key] = $this->convertValue($value);
         }
         return $result;
+    }
+    
+    protected function convertValue($value)
+    {
+        if (is_object($value)) {
+            return $this->convertXmlToArray($value);
+        } elseif (is_array($value)) {
+            foreach ($value as $i => $v) {
+                if (is_object($v)) {
+                    $value[$i] = $this->convertXmlToArray($v);
+                }
+            }
+            return $value;
+        } else {
+            return $value;
+        }
     }
 }
