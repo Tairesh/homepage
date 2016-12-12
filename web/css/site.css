@@ -369,6 +369,11 @@ pre {
     overflow-y: auto;
 }
 
+pre.inline {
+    display:inline;
+    padding: 2px 5px;
+}
+
 /* Media queries */ 
 @media screen and (min-width:900px)
 {
