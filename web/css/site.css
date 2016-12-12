@@ -102,6 +102,7 @@ header nav a:hover, header nav a:focus {
 .breadcrumb {
     padding: 8px 15px;
     margin-bottom: 20px;
+    margin-left: 0;
     list-style: none;
     background-color: #f5f5f5;
     border-radius: 4px;
@@ -121,6 +122,7 @@ header nav a:hover, header nav a:focus {
 .pagination {
     padding: 8px 15px;
     margin-bottom: 20px;
+    margin-left: 0;
     list-style: none;
     background-color: #f5f5f5;
     border-radius: 4px;
