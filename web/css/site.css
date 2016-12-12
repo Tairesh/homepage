@@ -167,6 +167,7 @@ article {
 
 article .tags {
     list-style: none;
+    margin-left: 0;
 }
 
 article .tags > li {
