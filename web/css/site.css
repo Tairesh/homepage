@@ -374,6 +374,10 @@ pre.inline {
     padding: 2px 5px;
 }
 
+ol,ul {
+    margin-left: 2em;
+}
+
 /* Media queries */ 
 @media screen and (min-width:900px)
 {
