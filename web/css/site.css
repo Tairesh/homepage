@@ -373,12 +373,22 @@ pre {
 }
 
 pre.inline {
-    display:inline;
+    display: inline-block;
     padding: 2px 5px;
+    overflow-y: hidden;
+    max-width: 100%;
 }
 
 ol,ul {
     margin-left: 2em;
+}
+
+dl {
+    margin: 1em 0 0 1em;
+}
+
+dd {
+    margin: 0.5em 0 0.5em 0.5em;
 }
 
 /* Media queries */ 
