@@ -377,6 +377,7 @@ pre.inline {
     padding: 2px 5px;
     overflow-y: hidden;
     max-width: 100%;
+    margin: 0 0 -7px;
 }
 
 ol,ul {
