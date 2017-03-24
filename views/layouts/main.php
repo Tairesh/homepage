@@ -33,7 +33,7 @@ AppAsset::register($this);
                     <h3>Категории:</h3>
                     <ul class="tags">
 			<?php foreach (Yii::$app->tagLoader->tags as $tag): ?>
-                        <li><?=Html::a($tag->name.' ('.$tag->rating.')','/tag/'.$tag->name)?></li>
+                        <li><?=Html::a($tag->name.'&nbsp;('.$tag->rating.')','/tag/'.$tag->name)?></li>
 			<?php endforeach ?>
                     </ul>
                 </article>
