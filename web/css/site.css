@@ -44,8 +44,10 @@ a {
 }
 
 header {
-    background: url(../img/header.png) center 0 no-repeat, transparent;
-    padding: .5em 3em;
+    background: url(../img/sprite.png) center 0 no-repeat, transparent;
+    background-position: 50% 0;
+    height: 62px;
+    padding: 9px 3em;
     color: #fff;
     line-height: 1;
     z-index: 1;
@@ -390,6 +392,30 @@ dl {
 
 dd {
     margin: 0.5em 0 0.5em 0.5em;
+}
+
+.icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(/img/sprite.png);
+    background-position-y: -80px;
+}
+
+.icon.twitter {
+    background-position-x: 0;
+}
+.icon.telegram {
+    background-position-x: -16px;
+}
+.icon.facebook {
+    background-position-x: -32px;
+}
+.icon.vk {
+    background-position-x: -48px;
+}
+.icon.share {
+    background-position-x: -64px;
 }
 
 /* Media queries */ 
